@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="138319f0-1931-441c-8dec-3ed8e0cfabfe" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/config.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/plugin.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cc/moecraft/kr/chatcolors/commands/CmdChatColor.java" afterPath="$PROJECT_DIR$/src/cc/moecraft/kr/chatcolors/commands/CmdChatColor.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,7 +18,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ChatColors.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ChatColors.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cc/moecraft/kr/chatcolors/ChatColors.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-340">
@@ -77,11 +76,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CmdChatColor.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CmdChatColor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cc/moecraft/kr/chatcolors/commands/CmdChatColor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="17" column="2" lean-forward="false" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
+            <state relative-caret-position="710">
+              <caret line="66" column="93" lean-forward="false" selection-start-line="66" selection-start-column="93" selection-end-line="66" selection-end-column="93" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -135,13 +134,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/cc/moecraft/kr/chatcolors/commands/CmdChatColor.java" />
         <option value="$PROJECT_DIR$/src/cc/moecraft/kr/chatcolors/file/CustomFile.java" />
         <option value="$PROJECT_DIR$/src/cc/moecraft/kr/chatcolors/file/FileManager.java" />
         <option value="$PROJECT_DIR$/src/cc/moecraft/kr/chatcolors/listeners/PlayerEvents.java" />
         <option value="$PROJECT_DIR$/src/cc/moecraft/kr/chatcolors/util/ItemUtil.java" />
         <option value="$PROJECT_DIR$/src/cc/moecraft/kr/chatcolors/util/Lang.java" />
         <option value="$PROJECT_DIR$/src/cc/moecraft/kr/chatcolors/ChatColors.java" />
+        <option value="$PROJECT_DIR$/src/cc/moecraft/kr/chatcolors/commands/CmdChatColor.java" />
       </list>
     </option>
   </component>
@@ -591,16 +590,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/cc/moecraft/kr/chatcolors/commands/CmdChatColor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="2" lean-forward="false" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cc/moecraft/kr/chatcolors/file/CustomFile.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -669,6 +658,16 @@
             <element signature="e#910#911#0" expanded="true" />
             <element signature="e#1367#1368#0" expanded="true" />
             <element signature="e#1438#1439#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cc/moecraft/kr/chatcolors/commands/CmdChatColor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="710">
+          <caret line="66" column="93" lean-forward="false" selection-start-line="66" selection-start-column="93" selection-end-line="66" selection-end-column="93" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -2,7 +2,6 @@ package cc.moecraft.kr.chatcolors.listeners;
 
 import cc.moecraft.kr.chatcolors.ChatColors;
 import cc.moecraft.kr.chatcolors.file.CustomFile;
-import cc.moecraft.kr.chatcolors.util.Lang;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

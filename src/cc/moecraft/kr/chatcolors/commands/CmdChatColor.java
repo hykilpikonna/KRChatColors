@@ -29,7 +29,7 @@ public class CmdChatColor
         }
         if (!(sender instanceof Player))
         {
-            sender.sendMessage("Sorry console, but only players can use this command");
+            sender.sendMessage("只有玩家可以使用此指令");
             return false;
         }
         if (!sender.hasPermission("chatcolor.use"))

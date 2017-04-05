@@ -1,0 +1,8 @@
+name: KRChatColors
+description: 'ChatColor reloaded'
+version: 1.0
+author: Hykilpikonna, Heiwa
+main: cc.moecraft.kr.chatcolors.ChatColors
+commands:
+  chatcolor:
+    description: Choose your chat color

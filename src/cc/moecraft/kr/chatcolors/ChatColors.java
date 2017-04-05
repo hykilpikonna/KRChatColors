@@ -22,22 +22,52 @@ public class ChatColors extends JavaPlugin
 {
     private static ChatColors instance;
 
-    public YamlConfiguration db;
-    public File dbFile;
+    public static YamlConfiguration db;
+    public static File dbFile;
 
-    public boolean debug = false;
+    public static YamlConfiguration lang;
+    public static File langFile;
+
+    public static YamlConfiguration itemLang;
+    public static File itemLangFile;
+
+    public static boolean debug = false;
 
     public void onEnable()
     {
         instance = this;
 
+        this.getConfig().options().copyDefaults(true);
+        saveConfig();
+
         dbFile = new File(this.getDataFolder() + "Database.yml");
         db = YamlConfiguration.loadConfiguration(dbFile);
         db.options().copyDefaults(true);
 
-        saveDefaultConfig();
-        registerCommands();
+        langFile = new File(this.getDataFolder() + "Language.yml");
+        lang = YamlConfiguration.loadConfiguration(dbFile);
+        lang.options().copyDefaults(true);
+
+        itemLangFile = new File(this.getDataFolder() + "ItemLanguage.yml");
+        itemLang = YamlConfiguration.loadConfiguration(dbFile);
+        itemLang.options().copyDefaults(true);
+
+        getCommand("chatcolor").setExecutor(new CmdChatColor());
+
         registerListeners();
+    }
+
+    void checkLang()
+    {
+        if (!(lang.contains("DefaultLang")) || lang.getBoolean("DefaultLang"))
+        {
+            lang.addDefault("");
+        }
+        else
+        {
+            //TODO: 内存多余模式
+            log("已加载语言文件");
+        }
     }
 
     public void onDisable()
@@ -48,11 +78,6 @@ public class ChatColors extends JavaPlugin
     public static ChatColors getInstance()
     {
         return instance;
-    }
-
-    private void registerCommands()
-    {
-        getCommand("chatcolor").setExecutor(new CmdChatColor());
     }
 
     private void registerListeners()
@@ -69,11 +94,47 @@ public class ChatColors extends JavaPlugin
      * 保存数据库
      * @return 是否保存成功
      */
-    private boolean saveDb()
+    public static boolean saveDb()
     {
         try
         {
             db.save(dbFile);
+            return true;
+        }
+        catch (IOException e1)
+        {
+            e1.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 保存语言数据库
+     * @return 是否保存成功
+     */
+    public static boolean saveLang()
+    {
+        try
+        {
+            lang.save(langFile);
+            return true;
+        }
+        catch (IOException e1)
+        {
+            e1.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 保存物品语言数据库
+     * @return 是否保存成功
+     */
+    public static boolean saveItemLang()
+    {
+        try
+        {
+            itemLang.save(itemLangFile);
             return true;
         }
         catch (IOException e1)
@@ -121,7 +182,7 @@ public class ChatColors extends JavaPlugin
      * 发送后台通知消息
      * @param s 消息
      */
-    public void log(String s)
+    public static void log(String s)
     {
         Bukkit.getConsoleSender().sendMessage("[PKP] " + s);
     }
@@ -130,7 +191,7 @@ public class ChatColors extends JavaPlugin
      * 发送后台通知消息(字符串数组)
      * @param s 字符串数组
      */
-    public void log(String[] s)
+    public static void log(String[] s)
     {
         for (String value : s)
         {
@@ -142,7 +203,7 @@ public class ChatColors extends JavaPlugin
      * 发送后台通知消息(字符串ArrayList)
      * @param s 字符串ArrayList
      */
-    public void log(ArrayList<String> s)
+    public static void log(ArrayList<String> s)
     {
         for (String value : s) {
             log(value);
@@ -153,7 +214,7 @@ public class ChatColors extends JavaPlugin
      * 发送后台Debug消息
      * @param s 消息
      */
-    public void Debug(String s)
+    public static void Debug(String s)
     {
         if (debug)
         {
@@ -169,7 +230,7 @@ public class ChatColors extends JavaPlugin
      * @param object 对象
      * @param message 消息
      */
-    public void Debug(Object object, String message)
+    public static void Debug(Object object, String message)
     {
         if (debug)
         {

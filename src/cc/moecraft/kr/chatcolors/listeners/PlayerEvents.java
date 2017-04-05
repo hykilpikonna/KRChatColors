@@ -1,7 +1,6 @@
 package cc.moecraft.kr.chatcolors.listeners;
 
 import cc.moecraft.kr.chatcolors.ChatColors;
-import cc.moecraft.kr.chatcolors.file.CustomFile;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -10,6 +9,10 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 
+import static cc.moecraft.kr.chatcolors.ChatColors.db;
+import static cc.moecraft.kr.chatcolors.ChatColors.lang;
+import static cc.moecraft.kr.chatcolors.ChatColors.saveDb;
+
 /**
  * Created by Kilpikonna on 2017/4/4 0004.
  *
@@ -17,17 +20,16 @@ import org.bukkit.event.player.PlayerJoinEvent;
 public class PlayerEvents implements Listener
 {
     private ChatColors plugin = ChatColors.getInstance();
-    private CustomFile dataFile = this.plugin.fileManager.getFile("data");
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e)
     {
         Player p = e.getPlayer();
-        if (this.dataFile.getFile().contains("Users." + p.getUniqueId().toString())) {
+        if (db.contains("Users." + p.getUniqueId().toString())) {
             return;
         }
-        this.dataFile.getFile().set("Users." + p.getUniqueId(), "");
-        this.dataFile.saveFile();
+        db.set("Users." + p.getUniqueId(), "");
+        saveDb();
     }
 
     @EventHandler
@@ -42,13 +44,13 @@ public class PlayerEvents implements Listener
         {
             if (!p.hasPermission("chatcolor.reset"))
             {
-                p.sendMessage(Lang.ERR_MISSING_PERMISSION.toString());
+                p.sendMessage(lang.getString("ERR_MISSING_PERMISSION.toString());
                 p.closeInventory();
                 return;
             }
-            this.dataFile.getFile().set("Users." + p.getUniqueId().toString() + ".Color", null);
-            this.dataFile.saveFile();
-            p.sendMessage(Lang.COLOR_RESET.toString());
+            db.set("Users." + p.getUniqueId().toString() + ".Color", null);
+            saveDb();
+            p.sendMessage(lang.getString("COLOR_RESET.toString());
             p.closeInventory();
             return;
         }
@@ -56,13 +58,13 @@ public class PlayerEvents implements Listener
         {
             if (!p.hasPermission("chatcolor.reset"))
             {
-                p.sendMessage(Lang.ERR_MISSING_PERMISSION.toString());
+                p.sendMessage(lang.getString("ERR_MISSING_PERMISSION.toString());
                 p.closeInventory();
                 return;
             }
-            this.dataFile.getFile().set("Users." + p.getUniqueId().toString() + ".Modifier", null);
-            this.dataFile.saveFile();
-            p.sendMessage(Lang.MODIFIER_RESET.toString());
+            db.set("Users." + p.getUniqueId().toString() + ".Modifier", null);
+            saveDb();
+            p.sendMessage(lang.getString("MODIFIER_RESET.toString());
             p.closeInventory();
             return;
         }
@@ -70,13 +72,13 @@ public class PlayerEvents implements Listener
         {
             if (!p.hasPermission("chatcolor.darkred"))
             {
-                p.sendMessage(Lang.ERR_MISSING_COLOR.toString());
+                p.sendMessage(lang.getString("ERR_MISSING_COLOR.toString());
                 p.closeInventory();
                 return;
             }
-            this.dataFile.getFile().set("Users." + p.getUniqueId().toString() + ".Color", "DARK_RED");
-            this.dataFile.saveFile();
-            p.sendMessage(Lang.COLOR_SET.toString().replace("%color%", "dark red"));
+            db.set("Users." + p.getUniqueId().toString() + ".Color", "DARK_RED");
+            saveDb();
+            p.sendMessage(lang.getString("COLOR_SET.toString().replace("%color%", "dark red"));
             p.closeInventory();
             return;
         }
@@ -84,13 +86,13 @@ public class PlayerEvents implements Listener
         {
             if (!p.hasPermission("chatcolor.red"))
             {
-                p.sendMessage(Lang.ERR_MISSING_COLOR.toString());
+                p.sendMessage(lang.getString("ERR_MISSING_COLOR.toString());
                 p.closeInventory();
                 return;
             }
-            this.dataFile.getFile().set("Users." + p.getUniqueId().toString() + ".Color", "RED");
-            this.dataFile.saveFile();
-            p.sendMessage(Lang.COLOR_SET.toString().replace("%color%", "red"));
+            db.set("Users." + p.getUniqueId().toString() + ".Color", "RED");
+            saveDb();
+            p.sendMessage(lang.getString("COLOR_SET.toString().replace("%color%", "red"));
             p.closeInventory();
             return;
         }
@@ -98,13 +100,13 @@ public class PlayerEvents implements Listener
         {
             if (!p.hasPermission("chatcolor.gold"))
             {
-                p.sendMessage(Lang.ERR_MISSING_COLOR.toString());
+                p.sendMessage(lang.getString("ERR_MISSING_COLOR.toString());
                 p.closeInventory();
                 return;
             }
-            this.dataFile.getFile().set("Users." + p.getUniqueId().toString() + ".Color", "GOLD");
-            this.dataFile.saveFile();
-            p.sendMessage(Lang.COLOR_SET.toString().replace("%color%", "gold"));
+            db.set("Users." + p.getUniqueId().toString() + ".Color", "GOLD");
+            saveDb();
+            p.sendMessage(lang.getString("COLOR_SET.toString().replace("%color%", "gold"));
             p.closeInventory();
             return;
         }
@@ -112,13 +114,13 @@ public class PlayerEvents implements Listener
         {
             if (!p.hasPermission("chatcolor.yellow"))
             {
-                p.sendMessage(Lang.ERR_MISSING_COLOR.toString());
+                p.sendMessage(lang.getString("ERR_MISSING_COLOR.toString());
                 p.closeInventory();
                 return;
             }
-            this.dataFile.getFile().set("Users." + p.getUniqueId().toString() + ".Color", "YELLOW");
-            this.dataFile.saveFile();
-            p.sendMessage(Lang.COLOR_SET.toString().replace("%color%", "yellow"));
+            db.set("Users." + p.getUniqueId().toString() + ".Color", "YELLOW");
+            saveDb();
+            p.sendMessage(lang.getString("COLOR_SET.toString().replace("%color%", "yellow"));
             p.closeInventory();
             return;
         }
@@ -126,13 +128,13 @@ public class PlayerEvents implements Listener
         {
             if (!p.hasPermission("chatcolor.green"))
             {
-                p.sendMessage(Lang.ERR_MISSING_COLOR.toString());
+                p.sendMessage(lang.getString("ERR_MISSING_COLOR.toString());
                 p.closeInventory();
                 return;
             }
-            this.dataFile.getFile().set("Users." + p.getUniqueId().toString() + ".Color", "GREEN");
-            this.dataFile.saveFile();
-            p.sendMessage(Lang.COLOR_SET.toString().replace("%color%", "green"));
+            db.set("Users." + p.getUniqueId().toString() + ".Color", "GREEN");
+            saveDb();
+            p.sendMessage(lang.getString("COLOR_SET.toString().replace("%color%", "green"));
             p.closeInventory();
             return;
         }
@@ -140,13 +142,13 @@ public class PlayerEvents implements Listener
         {
             if (!p.hasPermission("chatcolor.darkgreen"))
             {
-                p.sendMessage(Lang.ERR_MISSING_COLOR.toString());
+                p.sendMessage(lang.getString("ERR_MISSING_COLOR.toString());
                 p.closeInventory();
                 return;
             }
-            this.dataFile.getFile().set("Users." + p.getUniqueId().toString() + ".Color", "DARK_GREEN");
-            this.dataFile.saveFile();
-            p.sendMessage(Lang.COLOR_SET.toString().replace("%color%", "dark green"));
+            db.set("Users." + p.getUniqueId().toString() + ".Color", "DARK_GREEN");
+            saveDb();
+            p.sendMessage(lang.getString("COLOR_SET.toString().replace("%color%", "dark green"));
             p.closeInventory();
             return;
         }
@@ -154,13 +156,13 @@ public class PlayerEvents implements Listener
         {
             if (!p.hasPermission("chatcolor.aqua"))
             {
-                p.sendMessage(Lang.ERR_MISSING_COLOR.toString());
+                p.sendMessage(lang.getString("ERR_MISSING_COLOR.toString());
                 p.closeInventory();
                 return;
             }
-            this.dataFile.getFile().set("Users." + p.getUniqueId().toString() + ".Color", "AQUA");
-            this.dataFile.saveFile();
-            p.sendMessage(Lang.COLOR_SET.toString().replace("%color%", "aqua"));
+            db.set("Users." + p.getUniqueId().toString() + ".Color", "AQUA");
+            saveDb();
+            p.sendMessage(lang.getString("COLOR_SET.toString().replace("%color%", "aqua"));
             p.closeInventory();
             return;
         }
@@ -168,13 +170,13 @@ public class PlayerEvents implements Listener
         {
             if (!p.hasPermission("chatcolor.darkaqua"))
             {
-                p.sendMessage(Lang.ERR_MISSING_COLOR.toString());
+                p.sendMessage(lang.getString("ERR_MISSING_COLOR.toString());
                 p.closeInventory();
                 return;
             }
-            this.dataFile.getFile().set("Users." + p.getUniqueId().toString() + ".Color", "DARK_AQUA");
-            this.dataFile.saveFile();
-            p.sendMessage(Lang.COLOR_SET.toString().replace("%color%", "dark aqua"));
+            db.set("Users." + p.getUniqueId().toString() + ".Color", "DARK_AQUA");
+            saveDb();
+            p.sendMessage(lang.getString("COLOR_SET"));
             p.closeInventory();
             return;
         }
@@ -182,13 +184,13 @@ public class PlayerEvents implements Listener
         {
             if (!p.hasPermission("chatcolor.blue"))
             {
-                p.sendMessage(Lang.ERR_MISSING_COLOR.toString());
+                p.sendMessage(lang.getString("ERR_MISSING_COLOR"));
                 p.closeInventory();
                 return;
             }
-            this.dataFile.getFile().set("Users." + p.getUniqueId().toString() + ".Color", "BLUE");
-            this.dataFile.saveFile();
-            p.sendMessage(Lang.COLOR_SET.toString().replace("%color%", "blue"));
+            db.set("Users." + p.getUniqueId().toString() + ".Color", "BLUE");
+            saveDb();
+            p.sendMessage(lang.getString("COLOR_SET"));
             p.closeInventory();
             return;
         }
@@ -196,13 +198,13 @@ public class PlayerEvents implements Listener
         {
             if (!p.hasPermission("chatcolor.darkblue"))
             {
-                p.sendMessage(Lang.ERR_MISSING_COLOR.toString());
+                p.sendMessage(lang.getString("ERR_MISSING_COLOR"));
                 p.closeInventory();
                 return;
             }
-            this.dataFile.getFile().set("Users." + p.getUniqueId().toString() + ".Color", "DARK_BLUE");
-            this.dataFile.saveFile();
-            p.sendMessage(Lang.COLOR_SET.toString().replace("%color%", "dark blue"));
+            db.set("Users." + p.getUniqueId().toString() + ".Color", "DARK_BLUE");
+            saveDb();
+            p.sendMessage(lang.getString("COLOR_SET.toString().replace("%color%", "dark blue"));
             p.closeInventory();
             return;
         }
@@ -210,13 +212,13 @@ public class PlayerEvents implements Listener
         {
             if (!p.hasPermission("chatcolor.pink"))
             {
-                p.sendMessage(Lang.ERR_MISSING_COLOR.toString());
+                p.sendMessage(lang.getString("ERR_MISSING_COLOR.toString());
                 p.closeInventory();
                 return;
             }
-            this.dataFile.getFile().set("Users." + p.getUniqueId().toString() + ".Color", "PINK");
-            this.dataFile.saveFile();
-            p.sendMessage(Lang.COLOR_SET.toString().replace("%color%", "pink"));
+            db.set("Users." + p.getUniqueId().toString() + ".Color", "PINK");
+            saveDb();
+            p.sendMessage(lang.getString("COLOR_SET.toString().replace("%color%", "pink"));
             p.closeInventory();
             return;
         }
@@ -224,13 +226,13 @@ public class PlayerEvents implements Listener
         {
             if (!p.hasPermission("chatcolor.purple"))
             {
-                p.sendMessage(Lang.ERR_MISSING_COLOR.toString());
+                p.sendMessage(lang.getString("ERR_MISSING_COLOR.toString());
                 p.closeInventory();
                 return;
             }
-            this.dataFile.getFile().set("Users." + p.getUniqueId().toString() + ".Color", "PURPLE");
-            this.dataFile.saveFile();
-            p.sendMessage(Lang.COLOR_SET.toString().replace("%color%", "purple"));
+            db.set("Users." + p.getUniqueId().toString() + ".Color", "PURPLE");
+            saveDb();
+            p.sendMessage(lang.getString("COLOR_SET.toString().replace("%color%", "purple"));
             p.closeInventory();
             return;
         }
@@ -238,13 +240,13 @@ public class PlayerEvents implements Listener
         {
             if (!p.hasPermission("chatcolor.white"))
             {
-                p.sendMessage(Lang.ERR_MISSING_COLOR.toString());
+                p.sendMessage(lang.getString("ERR_MISSING_COLOR.toString());
                 p.closeInventory();
                 return;
             }
-            this.dataFile.getFile().set("Users." + p.getUniqueId().toString() + ".Color", "WHITE");
-            this.dataFile.saveFile();
-            p.sendMessage(Lang.COLOR_SET.toString().replace("%color%", "white"));
+            db.set("Users." + p.getUniqueId().toString() + ".Color", "WHITE");
+            saveDb();
+            p.sendMessage(lang.getString("COLOR_SET.toString().replace("%color%", "white"));
             p.closeInventory();
             return;
         }
@@ -252,13 +254,13 @@ public class PlayerEvents implements Listener
         {
             if (!p.hasPermission("chatcolor.lightgray"))
             {
-                p.sendMessage(Lang.ERR_MISSING_COLOR.toString());
+                p.sendMessage(lang.getString("ERR_MISSING_COLOR.toString());
                 p.closeInventory();
                 return;
             }
-            this.dataFile.getFile().set("Users." + p.getUniqueId().toString() + ".Color", "GRAY");
-            this.dataFile.saveFile();
-            p.sendMessage(Lang.COLOR_SET.toString().replace("%color%", "light gray"));
+            db.set("Users." + p.getUniqueId().toString() + ".Color", "GRAY");
+            saveDb();
+            p.sendMessage(lang.getString("COLOR_SET.toString().replace("%color%", "light gray"));
             p.closeInventory();
             return;
         }
@@ -266,13 +268,13 @@ public class PlayerEvents implements Listener
         {
             if (!p.hasPermission("chatcolor.darkgray"))
             {
-                p.sendMessage(Lang.ERR_MISSING_COLOR.toString());
+                p.sendMessage(lang.getString("ERR_MISSING_COLOR.toString());
                 p.closeInventory();
                 return;
             }
-            this.dataFile.getFile().set("Users." + p.getUniqueId().toString() + ".Color", "DARK_GRAY");
-            this.dataFile.saveFile();
-            p.sendMessage(Lang.COLOR_SET.toString().replace("%color%", "gray"));
+            db.set("Users." + p.getUniqueId().toString() + ".Color", "DARK_GRAY");
+            saveDb();
+            p.sendMessage(lang.getString("COLOR_SET.toString().replace("%color%", "gray"));
             p.closeInventory();
             return;
         }
@@ -280,13 +282,13 @@ public class PlayerEvents implements Listener
         {
             if (!p.hasPermission("chatcolor.underline"))
             {
-                p.sendMessage(Lang.ERR_MISSING_MODIFIER.toString());
+                p.sendMessage(lang.getString("ERR_MISSING_MODIFIER.toString());
                 p.closeInventory();
                 return;
             }
-            this.dataFile.getFile().set("Users." + p.getUniqueId().toString() + ".Modifier", "UNDERLINE");
-            this.dataFile.saveFile();
-            p.sendMessage(Lang.MODIFIER_SET.toString().replace("%modifer%", "underline"));
+            db.set("Users." + p.getUniqueId().toString() + ".Modifier", "UNDERLINE");
+            saveDb();
+            p.sendMessage(lang.getString("MODIFIER_SET.toString().replace("%modifer%", "underline"));
             p.closeInventory();
             return;
         }
@@ -294,13 +296,13 @@ public class PlayerEvents implements Listener
         {
             if (!p.hasPermission("chatcolor.italic"))
             {
-                p.sendMessage(Lang.ERR_MISSING_MODIFIER.toString());
+                p.sendMessage(lang.getString("ERR_MISSING_MODIFIER.toString());
                 p.closeInventory();
                 return;
             }
-            this.dataFile.getFile().set("Users." + p.getUniqueId().toString() + ".Modifier", "ITALIC");
-            this.dataFile.saveFile();
-            p.sendMessage(Lang.MODIFIER_SET.toString().replace("%modifer%", "italic"));
+            db.set("Users." + p.getUniqueId().toString() + ".Modifier", "ITALIC");
+            saveDb();
+            p.sendMessage(lang.getString("MODIFIER_SET.toString().replace("%modifer%", "italic"));
             p.closeInventory();
             return;
         }
@@ -308,13 +310,13 @@ public class PlayerEvents implements Listener
         {
             if (!p.hasPermission("chatcolor.bold"))
             {
-                p.sendMessage(Lang.ERR_MISSING_MODIFIER.toString());
+                p.sendMessage(lang.getString("ERR_MISSING_MODIFIER.toString());
                 p.closeInventory();
                 return;
             }
-            this.dataFile.getFile().set("Users." + p.getUniqueId().toString() + ".Modifier", "BOLD");
-            this.dataFile.saveFile();
-            p.sendMessage(Lang.MODIFIER_SET.toString().replace("%modifer%", "bold"));
+            db.set("Users." + p.getUniqueId().toString() + ".Modifier", "BOLD");
+            saveDb();
+            p.sendMessage(lang.getString("MODIFIER_SET.toString().replace("%modifer%", "bold"));
             p.closeInventory();
             return;
         }
@@ -322,13 +324,13 @@ public class PlayerEvents implements Listener
         {
             if (!p.hasPermission("chatcolor.strikethrough"))
             {
-                p.sendMessage(Lang.ERR_MISSING_MODIFIER.toString());
+                p.sendMessage(lang.getString("ERR_MISSING_MODIFIER.toString());
                 p.closeInventory();
                 return;
             }
-            this.dataFile.getFile().set("Users." + p.getUniqueId().toString() + ".Modifier", "STRIKETHROUGH");
-            this.dataFile.saveFile();
-            p.sendMessage(Lang.MODIFIER_SET.toString().replace("%modifer%", "strikethrough"));
+            db.set("Users." + p.getUniqueId().toString() + ".Modifier", "STRIKETHROUGH");
+            saveDb();
+            p.sendMessage(lang.getString("MODIFIER_SET.toString().replace("%modifer%", "strikethrough"));
             p.closeInventory();
             return;
         }
@@ -336,13 +338,13 @@ public class PlayerEvents implements Listener
         {
             if (!p.hasPermission("chatcolor.magic"))
             {
-                p.sendMessage(Lang.ERR_MISSING_MODIFIER.toString());
+                p.sendMessage(lang.getString("ERR_MISSING_MODIFIER.toString());
                 p.closeInventory();
                 return;
             }
-            this.dataFile.getFile().set("Users." + p.getUniqueId().toString() + ".Modifier", "MAGIC");
-            this.dataFile.saveFile();
-            p.sendMessage(Lang.MODIFIER_SET.toString().replace("%modifer%", "magic"));
+            db.set("Users." + p.getUniqueId().toString() + ".Modifier", "MAGIC");
+            saveDb();
+            p.sendMessage(lang.getString("MODIFIER_SET.toString().replace("%modifer%", "magic"));
             p.closeInventory();
             return;
         }
@@ -352,22 +354,22 @@ public class PlayerEvents implements Listener
     public void onChat(AsyncPlayerChatEvent e)
     {
         Player p = e.getPlayer();
-        if (!this.dataFile.getFile().contains("Users." + p.getUniqueId().toString())) {
+        if (!db.contains("Users." + p.getUniqueId().toString())) {
             return;
         }
-        if (this.dataFile.getFile().contains("Users." + p.getUniqueId().toString() + ".Color"))
+        if (db.contains("Users." + p.getUniqueId().toString() + ".Color"))
         {
-            if (this.dataFile.getFile().contains("Users." + p.getUniqueId().toString() + ".Modifier"))
+            if (db.contains("Users." + p.getUniqueId().toString() + ".Modifier"))
             {
-                e.setMessage(ChatColor.valueOf(this.dataFile.getFile().getString(new StringBuilder().append("Users.").append(p.getUniqueId().toString()).append(".Color").toString())) + "" + ChatColor.valueOf(this.dataFile.getFile().getString(new StringBuilder().append("Users.").append(p.getUniqueId().toString()).append(".Modifier").toString())) + e.getMessage());
+                e.setMessage(ChatColor.valueOf(db.getString(new StringBuilder().append("Users.").append(p.getUniqueId().toString()).append(".Color").toString())) + "" + ChatColor.valueOf(db.getString(new StringBuilder().append("Users.").append(p.getUniqueId().toString()).append(".Modifier").toString())) + e.getMessage());
                 return;
             }
-            e.setMessage(ChatColor.valueOf(this.dataFile.getFile().getString(new StringBuilder().append("Users.").append(p.getUniqueId().toString()).append(".Color").toString())) + e.getMessage());
+            e.setMessage(ChatColor.valueOf(db.getString(new StringBuilder().append("Users.").append(p.getUniqueId().toString()).append(".Color").toString())) + e.getMessage());
             return;
         }
-        if (!this.dataFile.getFile().contains("Users." + p.getUniqueId().toString() + ".Modifier")) {
+        if (!db.contains("Users." + p.getUniqueId().toString() + ".Modifier")) {
             return;
         }
-        e.setMessage(ChatColor.valueOf(this.dataFile.getFile().getString(new StringBuilder().append("Users.").append(p.getUniqueId().toString()).append(".Modifier").toString())) + e.getMessage());
+        e.setMessage(ChatColor.valueOf(db.getString(new StringBuilder().append("Users.").append(p.getUniqueId().toString()).append(".Modifier").toString())) + e.getMessage());
     }
 }

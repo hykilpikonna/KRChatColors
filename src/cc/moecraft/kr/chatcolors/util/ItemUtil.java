@@ -77,4 +77,15 @@ public class ItemUtil
 
         return itemStack;
     }
+
+    public static ItemStack createItem(Material material, int amount, int dataValue, String itemName)
+    {
+        ItemStack itemStack = new ItemStack(material, amount, (short)dataValue);
+        ItemMeta itemMeta = itemStack.getItemMeta();
+
+        itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', itemName));
+        itemStack.setItemMeta(itemMeta);
+
+        return itemStack;
+    }
 }

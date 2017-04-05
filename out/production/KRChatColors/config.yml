@@ -1,0 +1,7 @@
+Gui:
+  Color:
+    Lore:
+      - '&7&oLeft click to set your chat color'
+  Modifier:
+    Lore:
+      - '&7&oLeft click to set your chat modifier'

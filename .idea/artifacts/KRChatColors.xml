@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="KRChatColors">
+    <output-path>$PROJECT_DIR$/out/artifacts/KRChatColors</output-path>
+    <root id="archive" name="KRChatColors.jar">
+      <element id="module-output" name="KRChatColors" />
+    </root>
+  </artifact>
+</component>
